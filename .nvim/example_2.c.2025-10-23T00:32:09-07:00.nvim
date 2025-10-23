@@ -56,14 +56,19 @@ void insert_sorted(uint64_t data) {
     node_t *curr = head;
     node_t *prev = NULL;
 
-    while (curr != NULL && data >= curr->data) {
+    while (curr != NULL) {
+      if (data < curr->data) {
+        break;
+      }
+
       prev = curr;
       curr = curr->next;
     }
 
     prev->next = new_node;
-    if (curr != NULL)
-      new_node->next = curr; // curr, not curr->next
+    if (curr != NULL) {
+      new_node->next = curr->next;
+    }
   }
 
   info.sum += data;
