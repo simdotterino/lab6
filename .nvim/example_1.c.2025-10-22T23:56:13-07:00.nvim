@@ -33,16 +33,9 @@ void insert_sorted(uint64_t data) {
   new_node->data = data;
   new_node->next = NULL;
 
-  if (head == NULL) { // if there's no head
+  if (head == NULL) {
     head = new_node;
-  } else if (new_node->data < head->data) { // ADDED THIS LINE to insert new
-                                            // head
-
-    new_node->next = head;
-    head = new_node;
-  }
-
-  else {
+  } else {
     node_t *curr = head;
     node_t *prev = NULL;
 
@@ -52,14 +45,10 @@ void insert_sorted(uint64_t data) {
         prev->next = new_node;
         new_node->next = curr;
         inserted = true;
-      } else {
-
-        prev = curr;
-        curr = curr->next;
       }
+      prev = curr;
+      curr = curr->next;
     }
-    if (!inserted)
-      prev->next = new_node; // ADDDED THIS to insert new node at the end
   }
 }
 

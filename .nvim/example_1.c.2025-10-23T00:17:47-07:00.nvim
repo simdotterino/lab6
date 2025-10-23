@@ -35,12 +35,13 @@ void insert_sorted(uint64_t data) {
 
   if (head == NULL) { // if there's no head
     head = new_node;
-  } else if (new_node->data < head->data) { // ADDED THIS LINE to insert new
-                                            // head
+  } 
+  else if (new_node->data < head->data){ //ADDED THIS LINE to insert new head
 
     new_node->next = head;
     head = new_node;
   }
+
 
   else {
     node_t *curr = head;
